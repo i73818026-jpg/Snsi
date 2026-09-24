@@ -1,0 +1,4119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020606">
+
+<title>SADEE X DIMA OPTIMIZER</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --bg:#020606;
+    --panel:#06100e;
+    --cyan:#00ffcc;
+    --cyan2:#00cfa8;
+    --red:#ff0055;
+    --white:#eafff9;
+    --muted:#6e8580;
+    --line:#00ffcc22;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    color:var(--white);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #003b3025,
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #020606,
+            #010303
+        );
+
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+
+/* SCREEN SCANLINES */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    pointer-events:none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 3px,
+            #00ffcc03 4px
+        );
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    height:64px;
+    padding:0 18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:#020807ed;
+    border-bottom:1px solid var(--line);
+
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    color:var(--cyan);
+
+    font:900 16px monospace;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 14px #00ffcc55;
+}
+
+.logo small{
+    display:block;
+
+    margin-top:3px;
+
+    color:#60736f;
+
+    font:8px monospace;
+
+    letter-spacing:3px;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:#6effdd;
+
+    font:10px monospace;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#00ff99;
+
+    box-shadow:
+        0 0 12px #00ff99;
+
+    animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:.3;
+        transform:scale(.65);
+    }
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:min(760px,94%);
+
+    margin:22px auto 50px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:30px 18px;
+
+    margin-bottom:18px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #00ffcc0d,
+            transparent 60%
+        ),
+        #030b09;
+
+    border:1px solid #00ffcc30;
+
+    animation:heroAppear .7s ease both;
+}
+
+@keyframes heroAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(-12px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:55%;
+    height:1px;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 12px var(--cyan);
+
+    animation:heroScan 3s linear infinite;
+}
+
+@keyframes heroScan{
+
+    from{
+        left:-100%;
+    }
+
+    to{
+        left:150%;
+    }
+
+}
+
+.hero h1{
+    color:var(--cyan);
+
+    font:900 clamp(22px,6vw,38px) monospace;
+
+    letter-spacing:3px;
+
+    text-shadow:
+        0 0 18px #00ffcc55;
+
+    animation:glitchTitle 4s infinite;
+}
+
+@keyframes glitchTitle{
+
+    0%,92%,100%{
+        transform:none;
+    }
+
+    94%{
+        transform:translateX(2px);
+        text-shadow:
+            -2px 0 #ff0055,
+            2px 0 #00ffcc;
+    }
+
+    96%{
+        transform:translateX(-2px);
+    }
+
+}
+
+.hero p{
+    margin-top:9px;
+
+    color:#718984;
+
+    font:10px monospace;
+
+    letter-spacing:2px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    margin-top:17px;
+
+    animation:sectionAppear .5s ease both;
+}
+
+@keyframes sectionAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:9px;
+
+    color:var(--cyan);
+
+    font:11px monospace;
+
+    letter-spacing:2px;
+}
+
+.section-title::before{
+    content:">";
+
+    color:var(--red);
+
+    animation:titleBlink 1s infinite;
+}
+
+@keyframes titleBlink{
+
+    50%{
+        opacity:.25;
+    }
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    padding:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #07120f,
+            #030807
+        );
+
+    border:1px solid #00ffcc20;
+
+    clip-path:polygon(
+        0 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% 100%,
+        12px 100%,
+        0 calc(100% - 12px)
+    );
+
+    transition:
+        border-color .25s,
+        box-shadow .25s;
+}
+
+.card:hover{
+    border-color:#00ffcc3d;
+
+    box-shadow:
+        0 0 20px #00ffcc08;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:11px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+
+    gap:6px;
+}
+
+label{
+    color:#6f8580;
+
+    font:9px monospace;
+
+    letter-spacing:1px;
+}
+
+select,
+input{
+    width:100%;
+
+    padding:12px;
+
+    outline:none;
+
+    color:var(--white);
+
+    background:#020807;
+
+    border:1px solid #00ffcc25;
+
+    font:11px monospace;
+
+    transition:
+        .2s;
+}
+
+select:hover,
+input:hover{
+    border-color:#00ffcc55;
+}
+
+select:focus,
+input:focus{
+
+    border-color:#00ffccaa;
+
+    box-shadow:
+        0 0 14px #00ffcc10;
+
+    transform:translateY(-1px);
+}
+
+select option{
+    background:#06100e;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+    width:100%;
+
+    padding:13px;
+
+    cursor:pointer;
+
+    color:var(--cyan);
+
+    background:#00ffcc0c;
+
+    border:1px solid var(--cyan);
+
+    font:700 11px monospace;
+
+    letter-spacing:1px;
+
+    transition:
+        transform .15s,
+        background .2s,
+        color .2s,
+        border-color .2s,
+        box-shadow .2s;
+
+}
+
+
+/* shine */
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    transform:skewX(-20deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffffff18,
+            transparent
+        );
+
+}
+
+.btn:hover::before{
+
+    animation:buttonShine .65s ease;
+
+}
+
+@keyframes buttonShine{
+
+    from{
+        left:-120%;
+    }
+
+    to{
+        left:150%;
+    }
+
+}
+
+
+.btn:hover{
+
+    background:#00ffcc18;
+
+    box-shadow:
+        0 0 20px #00ffcc22;
+
+    transform:translateY(-2px);
+
+}
+
+.btn:active{
+
+    transform:
+        scale(.96);
+
+    background:
+        #00ffcc30;
+
+}
+
+
+/* clicked effect */
+
+.btn.clicked{
+
+    animation:
+        buttonClick .45s ease;
+
+}
+
+@keyframes buttonClick{
+
+    0%{
+        transform:scale(1);
+    }
+
+    40%{
+        transform:scale(.93);
+    }
+
+    70%{
+        transform:scale(1.03);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+
+/* OPTIMIZE SPECIAL */
+
+.btn.red{
+
+    color:#ff4d83;
+
+    border-color:var(--red);
+
+    box-shadow:
+        0 0 10px #ff005510;
+
+    animation:
+        optimizePulse 2.2s infinite;
+
+}
+
+@keyframes optimizePulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 5px #ff005500;
+    }
+
+    50%{
+        box-shadow:
+            0 0 18px #ff005533;
+    }
+
+}
+
+.btn.red:hover{
+
+    color:#fff;
+
+    background:#ff00551a;
+
+    border-color:#ff4d83;
+
+    box-shadow:
+        0 0 25px #ff005544;
+
+}
+
+.btn.red.optimizing{
+
+    color:#020606;
+
+    background:var(--cyan);
+
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 30px #00ffcc55;
+
+    animation:
+        optimizeLoading .8s infinite alternate;
+
+}
+
+@keyframes optimizeLoading{
+
+    from{
+        opacity:.65;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+/* scanning */
+
+.btn.scanning{
+
+    color:#020606;
+
+    background:var(--cyan);
+
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 25px #00ffcc44;
+
+}
+
+
+/* button row */
+
+.btn-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+
+    margin-top:12px;
+}
+
+
+/* =========================
+   SCANNER
+========================= */
+
+.scanner{
+
+    position:relative;
+
+    min-height:190px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:#020807;
+
+    border:1px solid #00ffcc25;
+}
+
+.scanner.scan-active{
+
+    box-shadow:
+        inset 0 0 30px #00ffcc0c;
+}
+
+.radar{
+
+    position:relative;
+
+    width:125px;
+    height:125px;
+
+    border-radius:50%;
+
+    border:1px solid #00ffcc44;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 0 27%,
+            #00ffcc08 28% 29%,
+            transparent 30% 48%,
+            #00ffcc08 49% 50%,
+            transparent 51% 69%,
+            #00ffcc08 70% 71%,
+            transparent 72%
+        );
+
+}
+
+.radar::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:50%;
+    height:1px;
+
+    background:var(--cyan);
+
+    transform-origin:left center;
+
+    animation:
+        radar 2.4s linear infinite;
+
+    box-shadow:
+        0 0 8px var(--cyan);
+
+}
+
+.radar::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:calc(50% - 3px);
+    left:calc(50% - 3px);
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 14px var(--cyan);
+
+}
+
+@keyframes radar{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.scan-text{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    bottom:12px;
+
+    text-align:center;
+
+    color:#607b75;
+
+    font:9px monospace;
+
+    letter-spacing:2px;
+
+}
+
+.scanner.scan-active .scan-text{
+
+    color:var(--cyan);
+
+    animation:
+        scanText .6s infinite alternate;
+
+}
+
+@keyframes scanText{
+
+    to{
+        opacity:.3;
+    }
+
+}
+
+
+/* =========================
+   DEVICE INFO
+========================= */
+
+.device-info{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:8px;
+
+    margin-top:10px;
+}
+
+.info-box{
+
+    padding:11px;
+
+    background:#00000044;
+
+    border:1px solid #ffffff0b;
+
+    transition:.2s;
+
+}
+
+.info-box:hover{
+
+    border-color:#00ffcc33;
+
+    transform:translateY(-2px);
+
+}
+
+.info-box span{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#536863;
+
+    font:8px monospace;
+
+}
+
+.info-box b{
+
+    color:#d8fff7;
+
+    font:11px monospace;
+
+    word-break:break-word;
+
+}
+
+
+/* =========================
+   PRESETS
+========================= */
+
+.presets{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:9px;
+}
+
+.preset{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:13px 7px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    background:#020807;
+
+    border:1px solid #00ffcc22;
+
+    transition:
+        .25s;
+
+}
+
+.preset::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 10px var(--cyan);
+
+    transition:.3s;
+
+}
+
+.preset:hover{
+
+    background:#00ffcc0b;
+
+    border-color:var(--cyan);
+
+    transform:
+        translateY(-3px);
+
+}
+
+.preset:hover::after,
+.preset.active::after{
+
+    width:100%;
+
+}
+
+.preset.active{
+
+    color:var(--cyan);
+
+    background:#00ffcc0f;
+
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 18px #00ffcc15;
+
+    transform:
+        translateY(-2px);
+
+}
+
+.preset strong{
+
+    display:block;
+
+    color:var(--cyan);
+
+    font:10px monospace;
+
+}
+
+.preset span{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#596d68;
+
+    font:8px monospace;
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+
+    display:none;
+
+}
+
+.result.show{
+
+    display:block;
+
+    animation:
+        resultAppear .5s ease both;
+
+}
+
+@keyframes resultAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(15px)
+            scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.terminal-result{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:18px 16px;
+
+    background:#010403;
+
+    border:1px solid #00ffcc30;
+
+    font:11px/1.9 monospace;
+
+    box-shadow:
+        inset 0 0 25px #00ffcc04;
+
+}
+
+.terminal-result::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:50%;
+    height:100%;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00ffcc0c,
+            transparent
+        );
+
+}
+
+.terminal-result.scan::before{
+
+    animation:
+        terminalScan 1.4s ease-out;
+
+}
+
+@keyframes terminalScan{
+
+    from{
+        left:-100%;
+    }
+
+    to{
+        left:150%;
+    }
+
+}
+
+.tr-line{
+
+    opacity:0;
+
+    transform:
+        translateX(-14px);
+
+    color:#78918b;
+
+}
+
+.tr-line.cyan{
+
+    color:var(--cyan);
+
+}
+
+.tr-line b{
+
+    color:#eafff9;
+
+    font-weight:bold;
+
+    text-shadow:
+        0 0 8px #00ffcc22;
+
+}
+
+.tr-line b.value{
+
+    color:var(--cyan);
+
+}
+
+.tr-divider{
+
+    opacity:0;
+
+    color:#31534c;
+
+    margin:5px 0;
+
+    transform:
+        translateX(-10px);
+
+}
+
+.tr-line.show,
+.tr-divider.show{
+
+    animation:
+        terminalReveal .36s ease forwards;
+
+}
+
+@keyframes terminalReveal{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateX(-14px);
+
+    }
+
+    70%{
+
+        opacity:1;
+
+        transform:
+            translateX(3px);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal{
+
+    min-height:210px;
+
+    max-height:300px;
+
+    overflow:auto;
+
+    padding:13px;
+
+    background:#010403;
+
+    border:1px solid #00ffcc20;
+
+    font:10px/1.8 monospace;
+
+}
+
+.terminal::-webkit-scrollbar{
+
+    width:4px;
+
+}
+
+.terminal::-webkit-scrollbar-thumb{
+
+    background:#00ffcc44;
+
+}
+
+.log{
+
+    color:#6e8b84;
+
+}
+
+.log.ok{
+
+    color:#00ffbb;
+
+}
+
+.log.warn{
+
+    color:#ffc857;
+
+}
+
+.log.red{
+
+    color:#ff4d83;
+
+}
+
+.cursor{
+
+    display:inline-block;
+
+    width:6px;
+    height:11px;
+
+    vertical-align:middle;
+
+    background:var(--cyan);
+
+    animation:
+        blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+.history{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+.history-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 12px;
+
+    background:#020807;
+
+    border-left:
+        2px solid #00ffcc55;
+
+    transition:.2s;
+
+}
+
+.history-item:hover{
+
+    border-left-color:var(--cyan);
+
+    background:#00ffcc07;
+
+    transform:
+        translateX(3px);
+
+}
+
+.history-item span{
+
+    color:#718984;
+
+    font:9px monospace;
+
+}
+
+.history-item b{
+
+    color:var(--cyan);
+
+    font:10px monospace;
+
+}
+
+
+/* =========================
+   OWNER
+========================= */
+
+.owner-card{
+
+    margin-top:18px;
+
+    padding:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #001714,
+            #020608
+        );
+
+    border:1px solid #00ffcc55;
+
+    clip-path:polygon(
+        0 0,
+        calc(100% - 14px) 0,
+        100% 14px,
+        100% 100%,
+        14px 100%,
+        0 calc(100% - 14px)
+    );
+
+    box-shadow:
+        0 0 25px #00ffcc12;
+
+}
+
+.owner-title{
+
+    margin-bottom:15px;
+
+    color:var(--cyan);
+
+    font:13px monospace;
+
+    letter-spacing:2px;
+
+}
+
+.owner-info{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+
+    margin-bottom:14px;
+
+}
+
+.owner-info div{
+
+    padding:12px;
+
+    background:#00000055;
+
+    border:1px solid #ffffff12;
+
+}
+
+.owner-info span{
+
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#777;
+
+    font:9px monospace;
+
+}
+
+.owner-info b{
+
+    color:#fff;
+
+    font-size:12px;
+
+    letter-spacing:.5px;
+
+}
+
+.whatsapp-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    width:100%;
+
+    padding:14px 15px;
+
+    color:var(--cyan);
+
+    text-decoration:none;
+
+    background:#00ffcc0d;
+
+    border:1px solid #00ffcc66;
+
+    font:700 11px monospace;
+
+    letter-spacing:1px;
+
+    transition:.2s;
+
+}
+
+.whatsapp-btn:hover{
+
+    background:#00ffcc18;
+
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 18px #00ffcc22;
+
+    transform:
+        translateY(-2px);
+
+}
+
+.whatsapp-btn:active{
+
+    transform:
+        scale(.97);
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+    margin-top:18px;
+
+    padding:18px 5px;
+
+    text-align:center;
+
+    color:#40524e;
+
+    font:8px/1.8 monospace;
+
+    letter-spacing:1px;
+
+}
+
+.footer b{
+
+    color:#00ffcc66;
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+    bottom:22px;
+
+    z-index:1000;
+
+    padding:11px 18px;
+
+    color:#00110d;
+
+    background:var(--cyan);
+
+    font:700 10px monospace;
+
+    box-shadow:
+        0 0 20px #00ffcc44;
+
+    transform:
+        translate(-50%,20px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+
+}
+
+
+/* =========================
+   OPTIMIZE OVERLAY
+========================= */
+
+.optimizing-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:900;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#010504f5;
+
+    backdrop-filter:blur(5px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s;
+
+}
+
+.optimizing-overlay.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+.optimize-box{
+
+    width:min(360px,88%);
+
+    padding:25px;
+
+    text-align:center;
+
+    background:#030b09;
+
+    border:1px solid #00ffcc55;
+
+    box-shadow:
+        0 0 35px #00ffcc12;
+
+    animation:
+        optimizeBox .4s ease;
+
+}
+
+@keyframes optimizeBox{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+.optimize-icon{
+
+    width:65px;
+    height:65px;
+
+    margin:0 auto 18px;
+
+    border:2px solid #00ffcc33;
+
+    border-top-color:var(--cyan);
+
+    border-right-color:#ff0055;
+
+    border-radius:50%;
+
+    animation:
+        spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.optimize-title{
+
+    color:var(--cyan);
+
+    font:700 13px monospace;
+
+    letter-spacing:2px;
+
+}
+
+.optimize-sub{
+
+    margin-top:8px;
+
+    color:#617873;
+
+    font:9px monospace;
+
+}
+
+.optimize-progress{
+
+    height:2px;
+
+    margin-top:18px;
+
+    overflow:hidden;
+
+    background:#00ffcc12;
+
+}
+
+.optimize-progress span{
+
+    display:block;
+
+    width:0;
+
+    height:100%;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 10px var(--cyan);
+
+}
+
+.optimizing-overlay.show
+.optimize-progress span{
+
+    animation:
+        progress 2s ease forwards;
+
+}
+
+@keyframes progress{
+
+    to{
+        width:100%;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .topbar{
+
+        height:58px;
+
+        padding:
+            0 12px;
+
+    }
+
+    .logo{
+
+        font-size:13px;
+
+    }
+
+    .container{
+
+        width:94%;
+
+        margin-top:15px;
+
+    }
+
+    .grid{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .presets{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .owner-info{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .btn-row{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .hero{
+
+        padding:
+            23px 12px;
+
+    }
+
+    .hero h1{
+
+        font-size:21px;
+
+    }
+
+    .terminal-result{
+
+        padding:
+            16px 12px;
+
+        font-size:10px;
+
+    }
+
+    .device-info{
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div class="logo">
+
+        SADEE X DIMA
+
+        <small>
+            OPTIMIZER SYSTEM
+        </small>
+
+    </div>
+
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        SYSTEM ONLINE
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<section class="hero">
+
+    <h1>
+        SADEE X DIMA OPTIMIZER
+    </h1>
+
+    <p>
+        // FREE FIRE SENSITIVITY OPTIMIZATION SYSTEM //
+    </p>
+
+</section>
+
+
+
+<section class="section">
+
+    <div class="section-title">
+        DEVICE CONFIGURATION
+    </div>
+
+
+    <div class="card">
+
+        <div class="grid">
+
+
+            <div class="field">
+
+                <label>
+                    DEVICE BRAND
+                </label>
+
+                <select id="brand">
+
+                    <option value="auto">
+                        AUTO DETECT
+                    </option>
+
+                    <option>Samsung</option>
+                    <option>Xiaomi</option>
+                    <option>Redmi</option>
+                    <option>POCO</option>
+                    <option>Realme</option>
+                    <option>OPPO</option>
+                    <option>Vivo</option>
+                    <option>OnePlus</option>
+                    <option>Huawei</option>
+                    <option>Infinix</option>
+                    <option>Tecno</option>
+                    <option>iPhone</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    DEVICE MODEL
+                </label>
+
+                <input
+                    id="model"
+                    type="text"
+                    placeholder="e.g. TECNO SPARK GO 1"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    RAM
+                </label>
+
+                <select id="ram">
+
+                    <option value="2">
+                        2 GB
+                    </option>
+
+                    <option value="3">
+                        3 GB
+                    </option>
+
+                    <option value="4">
+                        4 GB
+                    </option>
+
+                    <option value="6" selected>
+                        6 GB
+                    </option>
+
+                    <option value="8">
+                        8 GB
+                    </option>
+
+                    <option value="12">
+                        12 GB
+                    </option>
+
+                    <option value="16">
+                        16 GB+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    REFRESH RATE
+                </label>
+
+                <select id="hz">
+
+                    <option value="60">
+                        60 Hz
+                    </option>
+
+                    <option value="90">
+                        90 Hz
+                    </option>
+
+                    <option value="120" selected>
+                        120 Hz
+                    </option>
+
+                    <option value="144">
+                        144 Hz
+                    </option>
+
+                    <option value="165">
+                        165 Hz+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    PLAY STYLE
+                </label>
+
+                <select id="style">
+
+                    <option value="balanced">
+                        BALANCED
+                    </option>
+
+                    <option value="rush">
+                        RUSH / FAST
+                    </option>
+
+                    <option value="drag">
+                        DRAG HEADSHOT
+                    </option>
+
+                    <option value="sniper">
+                        SNIPER
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    PERFORMANCE MODE
+                </label>
+
+                <select id="performance">
+
+                    <option value="normal">
+                        NORMAL
+                    </option>
+
+                    <option value="high">
+                        HIGH PERFORMANCE
+                    </option>
+
+                    <option value="ultra">
+                        ULTRA PERFORMANCE
+                    </option>
+
+                    <option value="battery">
+                        BATTERY SAVER
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="btn-row">
+
+
+            <button
+                class="btn"
+                id="scanBtn"
+                onclick="scanDevice()"
+            >
+                SCAN DEVICE
+            </button>
+
+
+            <button
+                class="btn red"
+                id="optimizeBtn"
+                onclick="optimize()"
+            >
+                ⚡ OPTIMIZE
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="section">
+
+    <div class="section-title">
+        DEVICE SCANNER
+    </div>
+
+
+    <div class="card">
+
+        <div
+            class="scanner"
+            id="scanner"
+        >
+
+            <div class="radar"></div>
+
+            <div
+                class="scan-text"
+                id="scanText"
+            >
+                READY FOR DEVICE SCAN
+            </div>
+
+        </div>
+
+
+        <div class="device-info">
+
+
+            <div class="info-box">
+
+                <span>
+                    PLATFORM
+                </span>
+
+                <b id="platform">
+                    WAITING...
+                </b>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>
+                    SCREEN
+                </span>
+
+                <b id="screen">
+                    WAITING...
+                </b>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>
+                    CPU THREADS
+                </span>
+
+                <b id="cpu">
+                    WAITING...
+                </b>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>
+                    MEMORY
+                </span>
+
+                <b id="memory">
+                    WAITING...
+                </b>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>
+                    BATTERY
+                </span>
+
+                <b id="battery">
+                    WAITING...
+                </b>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>
+                    BROWSER
+                </span>
+
+                <b id="ua">
+                    WAITING...
+                </b>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="section">
+
+    <div class="section-title">
+        QUICK PRESETS
+    </div>
+
+
+    <div class="card">
+
+        <div class="presets">
+
+
+            <div
+                class="preset"
+                onclick="loadPreset(1,this)"
+            >
+
+                <strong>
+                    PRESET 01
+                </strong>
+
+                <span>
+                    HIGH DRAG
+                </span>
+
+            </div>
+
+
+            <div
+                class="preset"
+                onclick="loadPreset(2,this)"
+            >
+
+                <strong>
+                    PRESET 02
+                </strong>
+
+                <span>
+                    BALANCED
+                </span>
+
+            </div>
+
+
+            <div
+                class="preset"
+                onclick="loadPreset(3,this)"
+            >
+
+                <strong>
+                    PRESET 03
+                </strong>
+
+                <span>
+                    CONTROL
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section
+    class="section result"
+    id="resultSection"
+>
+
+
+    <div class="section-title">
+        OPTIMIZATION RESULT
+    </div>
+
+
+    <div
+        class="terminal-result"
+        id="terminalResult"
+    >
+
+
+        <div class="tr-line cyan">
+
+            &gt; CONNECTION :
+
+            <b
+                class="value"
+                id="trConnection"
+            >
+                STABLE
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            &gt; DEVICE :
+
+            <b id="trDevice">
+                DEVICE
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            &gt; GAME :
+
+            <b>
+                FREE FIRE
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            &gt; PROFILE :
+
+            <b
+                class="value"
+                id="trProfile"
+            >
+                PRECISION
+            </b>
+
+        </div>
+
+
+        <div class="tr-divider">
+            --------------------------------
+        </div>
+
+
+        <div class="tr-line">
+
+            GENERAL :
+
+            <b
+                class="value"
+                id="trGeneral"
+            >
+                ---
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            RED DOT :
+
+            <b
+                class="value"
+                id="trRed"
+            >
+                ---
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            2X SCOPE :
+
+            <b
+                class="value"
+                id="tr2x"
+            >
+                ---
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            4X SCOPE :
+
+            <b
+                class="value"
+                id="tr4x"
+            >
+                ---
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            SNIPER :
+
+            <b
+                class="value"
+                id="trSniper"
+            >
+                ---
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            FREE LOOK :
+
+            <b
+                class="value"
+                id="trFree"
+            >
+                ---
+            </b>
+
+        </div>
+
+
+        <div class="tr-divider">
+            --------------------------------
+        </div>
+
+
+        <div class="tr-line">
+
+            DPI :
+
+            <b
+                class="value"
+                id="trDpi"
+            >
+                ---
+            </b>
+
+        </div>
+
+
+        <div class="tr-line">
+
+            FIRE BUTTON :
+
+            <b
+                class="value"
+                id="trFire"
+            >
+                --%
+            </b>
+
+        </div>
+
+
+        <div class="tr-divider">
+            --------------------------------
+        </div>
+
+
+        <div class="tr-line cyan">
+
+            &gt; PRESET STATUS :
+
+            <b class="value">
+                READY
+            </b>
+
+        </div>
+
+
+        <div class="tr-line cyan">
+
+            &gt; SADEE X DIMA OPTIMIZER :
+
+            <b class="value">
+                OK
+            </b>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="btn-row">
+
+
+        <button
+            class="btn"
+            onclick="copyResult()"
+        >
+            COPY RESULT
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="shareResult()"
+        >
+            SHARE RESULT
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<section class="section">
+
+
+    <div class="section-title">
+        OPTIMIZATION LOG
+    </div>
+
+
+    <div
+        class="terminal"
+        id="terminal"
+    >
+
+        <div class="log">
+            [SYSTEM] SADEE X DIMA OPTIMIZER initialized...
+        </div>
+
+        <div class="log">
+            [SYSTEM] Waiting for configuration...
+        </div>
+
+        <div class="log">
+            [SYSTEM] Select device parameters and run optimize.
+        </div>
+
+        <div>
+            <span class="cursor"></span>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="section">
+
+
+    <div class="section-title">
+        OPTIMIZATION HISTORY
+    </div>
+
+
+    <div class="card">
+
+        <div
+            class="history"
+            id="history"
+        >
+
+            <div class="history-item">
+
+                <span>
+                    NO HISTORY YET
+                </span>
+
+                <b>
+                    --
+                </b>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<div class="owner-card">
+
+
+    <div class="owner-title">
+        // OWNER CONTACT
+    </div>
+
+
+    <div class="owner-info">
+
+
+        <div>
+
+            <span>
+                OWNER
+            </span>
+
+            <b>
+                SADEE PEHEDARA
+            </b>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                CONTACT
+            </span>
+
+            <b>
+                0760625028
+            </b>
+
+        </div>
+
+
+    </div>
+
+
+    <a
+        class="whatsapp-btn"
+        href="https://chat.whatsapp.com/I3BsxvZMWM752XxJygaljp"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <span>
+            ◉
+        </span>
+
+        <span>
+            JOIN WHATSAPP GROUP
+        </span>
+
+        <span>
+            ↗
+        </span>
+
+    </a>
+
+
+</div>
+
+
+
+<div class="footer">
+
+    <b>
+        SADEE X DIMA
+    </b>
+
+    // OPTIMIZER SYSTEM
+
+    <br>
+
+    DEVICE RECOMMENDATION TOOL
+    • NOT A GAME MODIFIER
+
+</div>
+
+
+</main>
+
+
+
+<div
+    class="optimizing-overlay"
+    id="optimizingOverlay"
+>
+
+
+    <div class="optimize-box">
+
+
+        <div class="optimize-icon"></div>
+
+
+        <div class="optimize-title">
+            OPTIMIZING SENSITIVITY
+        </div>
+
+
+        <div
+            class="optimize-sub"
+            id="optimizeStatus"
+        >
+            ANALYZING DEVICE...
+        </div>
+
+
+        <div class="optimize-progress">
+
+            <span></span>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<div
+    class="toast"
+    id="toast"
+>
+    READY
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   PRESETS
+========================= */
+
+const presets = {
+
+    1:{
+        general:195,
+        red:188,
+        x2:180,
+        x4:170,
+        sniper:150,
+        free:190,
+        fire:48,
+        dpi:480
+    },
+
+    2:{
+        general:180,
+        red:174,
+        x2:166,
+        x4:158,
+        sniper:140,
+        free:176,
+        fire:45,
+        dpi:474
+    },
+
+    3:{
+        general:165,
+        red:158,
+        x2:150,
+        x4:142,
+        sniper:125,
+        free:165,
+        fire:42,
+        dpi:460
+    }
+
+};
+
+
+let currentResult = null;
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function delay(ms){
+
+    return new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                ms
+            )
+    );
+
+}
+
+
+function clamp(
+    value,
+    min,
+    max
+){
+
+    return Math.max(
+        min,
+        Math.min(
+            max,
+            value
+        )
+    );
+
+}
+
+
+/* =========================
+   BUTTON CLICK ANIMATION
+========================= */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        const button =
+            e.target.closest(
+                ".btn"
+            );
+
+        if(!button)
+            return;
+
+
+        button.classList.remove(
+            "clicked"
+        );
+
+
+        void button.offsetWidth;
+
+
+        button.classList.add(
+            "clicked"
+        );
+
+    }
+);
+
+
+/* =========================
+   LOG
+========================= */
+
+function log(
+    text,
+    type=""
+){
+
+    const terminal =
+        document.getElementById(
+            "terminal"
+        );
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.className =
+        "log " + type;
+
+
+    div.textContent =
+        text;
+
+
+    terminal.insertBefore(
+        div,
+        terminal.lastElementChild
+    );
+
+
+    terminal.scrollTop =
+        terminal.scrollHeight;
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(message){
+
+    const t =
+        document.getElementById(
+            "toast"
+        );
+
+
+    t.textContent =
+        message;
+
+
+    t.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        ()=>{
+            t.classList.remove(
+                "show"
+            );
+        },
+        1800
+    );
+
+}
+
+
+/* =========================
+   BROWSER
+========================= */
+
+function getBrowserName(){
+
+    const ua =
+        navigator.userAgent;
+
+
+    if(
+        ua.includes("Edg")
+    )
+        return "EDGE";
+
+
+    if(
+        ua.includes("Chrome")
+    )
+        return "CHROME";
+
+
+    if(
+        ua.includes("Firefox")
+    )
+        return "FIREFOX";
+
+
+    if(
+        ua.includes("Safari")
+    )
+        return "SAFARI";
+
+
+    return "WEBVIEW";
+
+}
+
+
+/* =========================
+   DEVICE SCAN
+========================= */
+
+async function scanDevice(){
+
+    const btn =
+        document.getElementById(
+            "scanBtn"
+        );
+
+
+    const scanner =
+        document.getElementById(
+            "scanner"
+        );
+
+
+    const scanText =
+        document.getElementById(
+            "scanText"
+        );
+
+
+    btn.classList.add(
+        "scanning"
+    );
+
+
+    scanner.classList.add(
+        "scan-active"
+    );
+
+
+    btn.textContent =
+        "SCANNING...";
+
+
+    scanText.textContent =
+        "SCANNING DEVICE...";
+
+
+    log(
+        "[SCAN] Starting hardware scan...",
+        "warn"
+    );
+
+
+    await delay(450);
+
+
+    const platform =
+        navigator.platform ||
+        "NOT EXPOSED";
+
+
+    const width =
+        window.screen.width ||
+        "?";
+
+
+    const height =
+        window.screen.height ||
+        "?";
+
+
+    const cpu =
+        navigator.hardwareConcurrency ||
+        "N/A";
+
+
+    const memory =
+        navigator.deviceMemory
+        ? navigator.deviceMemory +
+          " GB"
+        : "NOT EXPOSED";
+
+
+    document.getElementById(
+        "platform"
+    ).textContent =
+        platform;
+
+
+    document.getElementById(
+        "screen"
+    ).textContent =
+        width +
+        " × " +
+        height;
+
+
+    document.getElementById(
+        "cpu"
+    ).textContent =
+        cpu +
+        " THREADS";
+
+
+    document.getElementById(
+        "memory"
+    ).textContent =
+        memory;
+
+
+    document.getElementById(
+        "ua"
+    ).textContent =
+        getBrowserName();
+
+
+    if(
+        navigator.getBattery
+    ){
+
+        try{
+
+            const battery =
+                await navigator.getBattery();
+
+
+            document.getElementById(
+                "battery"
+            ).textContent =
+                Math.round(
+                    battery.level * 100
+                ) +
+                "%";
+
+        }
+
+        catch(e){
+
+            document.getElementById(
+                "battery"
+            ).textContent =
+                "N/A";
+
+        }
+
+    }
+
+    else{
+
+        document.getElementById(
+            "battery"
+        ).textContent =
+            "NOT EXPOSED";
+
+    }
+
+
+    await delay(500);
+
+
+    scanText.textContent =
+        "DEVICE SCAN COMPLETE";
+
+
+    log(
+        "[SCAN] Platform: " +
+        platform,
+        "ok"
+    );
+
+
+    log(
+        "[SCAN] Screen: " +
+        width +
+        "x" +
+        height,
+        "ok"
+    );
+
+
+    log(
+        "[SCAN] CPU threads: " +
+        cpu,
+        "ok"
+    );
+
+
+    log(
+        "[SCAN] Memory: " +
+        memory,
+        "ok"
+    );
+
+
+    log(
+        "[SCAN] Hardware scan completed.",
+        "ok"
+    );
+
+
+    btn.classList.remove(
+        "scanning"
+    );
+
+
+    btn.textContent =
+        "SCAN DEVICE";
+
+
+    scanner.classList.remove(
+        "scan-active"
+    );
+
+
+    toast(
+        "DEVICE SCAN COMPLETE"
+    );
+
+}
+
+
+/* =========================
+   DPI
+========================= */
+
+function calculateDPI(){
+
+    const ram =
+        Number(
+            document.getElementById(
+                "ram"
+            ).value
+        );
+
+
+    const hz =
+        Number(
+            document.getElementById(
+                "hz"
+            ).value
+        );
+
+
+    let dpi = 440;
+
+
+    if(ram >= 6)
+        dpi += 18;
+
+
+    if(ram >= 8)
+        dpi += 8;
+
+
+    if(hz >= 90)
+        dpi += 4;
+
+
+    if(hz >= 120)
+        dpi += 4;
+
+
+    if(hz >= 144)
+        dpi += 4;
+
+
+    return clamp(
+        dpi,
+        420,
+        520
+    );
+
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+function getProfile(){
+
+    const style =
+        document.getElementById(
+            "style"
+        ).value;
+
+
+    if(style === "rush")
+        return "RUSH";
+
+
+    if(style === "sniper")
+        return "SNIPER";
+
+
+    if(style === "drag")
+        return "PRECISION";
+
+
+    return "BALANCED";
+
+}
+
+
+/* =========================
+   OPTIMIZE
+========================= */
+
+async function optimize(){
+
+    const button =
+        document.getElementById(
+            "optimizeBtn"
+        );
+
+
+    if(
+        button.classList.contains(
+            "optimizing"
+        )
+    )
+        return;
+
+
+    const ram =
+        Number(
+            document.getElementById(
+                "ram"
+            ).value
+        );
+
+
+    const hz =
+        Number(
+            document.getElementById(
+                "hz"
+            ).value
+        );
+
+
+    const style =
+        document.getElementById(
+            "style"
+        ).value;
+
+
+    const performance =
+        document.getElementById(
+            "performance"
+        ).value;
+
+
+    const brand =
+        document.getElementById(
+            "brand"
+        ).value;
+
+
+    const modelInput =
+        document.getElementById(
+            "model"
+        ).value.trim();
+
+
+    const model =
+        modelInput ||
+        (
+            brand !== "auto"
+            ? brand.toUpperCase()
+            : "AUTO DEVICE"
+        );
+
+
+    const overlay =
+        document.getElementById(
+            "optimizingOverlay"
+        );
+
+
+    const status =
+        document.getElementById(
+            "optimizeStatus"
+        );
+
+
+    button.classList.add(
+        "optimizing"
+    );
+
+
+    button.textContent =
+        "⚡ OPTIMIZING...";
+
+
+    overlay.classList.add(
+        "show"
+    );
+
+
+    status.textContent =
+        "ANALYZING DEVICE...";
+
+
+    log(
+        "[OPT] Starting sensitivity optimization...",
+        "warn"
+    );
+
+
+    await delay(400);
+
+
+    status.textContent =
+        "CALCULATING TOUCH RESPONSE...";
+
+
+    await delay(400);
+
+
+    status.textContent =
+        "BUILDING DEVICE PROFILE...";
+
+
+    await delay(400);
+
+
+    status.textContent =
+        "GENERATING STABLE SENSITIVITY...";
+
+
+    let base = 168;
+
+
+    /* RAM */
+
+    if(ram <= 2)
+        base -= 16;
+
+    else if(ram <= 3)
+        base -= 11;
+
+    else if(ram <= 4)
+        base -= 6;
+
+    else if(ram >= 12)
+        base += 6;
+
+    else if(ram >= 8)
+        base += 4;
+
+
+    /* HZ */
+
+    if(hz === 60)
+        base -= 5;
+
+    else if(hz === 90)
+        base -= 2;
+
+    else if(hz === 120)
+        base += 2;
+
+    else if(hz >= 144)
+        base += 4;
+
+
+    /* STYLE */
+
+    if(style === "rush")
+        base += 5;
+
+    if(style === "drag")
+        base += 7;
+
+    if(style === "sniper")
+        base -= 7;
+
+
+    /* PERFORMANCE */
+
+    if(performance === "high")
+        base += 2;
+
+    if(performance === "ultra")
+        base += 4;
+
+    if(performance === "battery")
+        base -= 4;
+
+
+    base =
+        clamp(
+            base,
+            150,
+            182
+        );
+
+
+    const result = {
+
+        general:
+            clamp(
+                base + 6,
+                160,
+                200
+            ),
+
+        red:
+            clamp(
+                base + 1,
+                155,
+                195
+            ),
+
+        x2:
+            clamp(
+                base - 11,
+                145,
+                190
+            ),
+
+        x4:
+            clamp(
+                base - 16,
+                135,
+                185
+            ),
+
+        sniper:
+            clamp(
+                base - 37,
+                110,
+                165
+            ),
+
+        free:
+            clamp(
+                base,
+                150,
+                195
+            ),
+
+        fire:
+            clamp(
+                44 +
+                (ram >= 6 ? 2 : 0) +
+                (style === "drag" ? 2 : 0),
+                42,
+                50
+            ),
+
+        dpi:
+            calculateDPI()
+
+    };
+
+
+    await delay(500);
+
+
+    overlay.classList.remove(
+        "show"
+    );
+
+
+    button.classList.remove(
+        "optimizing"
+    );
+
+
+    button.textContent =
+        "⚡ OPTIMIZE";
+
+
+    currentResult =
+        result;
+
+
+    showResult(
+        result
+    );
+
+
+    log(
+        "[OPT] Device: " +
+        model
+    );
+
+
+    log(
+        "[OPT] RAM: " +
+        ram +
+        " GB",
+        "ok"
+    );
+
+
+    log(
+        "[OPT] Refresh: " +
+        hz +
+        " Hz",
+        "ok"
+    );
+
+
+    log(
+        "[OPT] Profile: " +
+        getProfile(),
+        "ok"
+    );
+
+
+    log(
+        "[OPT] Stable sensitivity generated.",
+        "ok"
+    );
+
+
+    log(
+        "[OPT] Optimization completed.",
+        "ok"
+    );
+
+
+    saveHistory(
+        result
+    );
+
+
+    toast(
+        "SENSITIVITY READY"
+    );
+
+}
+
+
+/* =========================
+   SHOW RESULT
+========================= */
+
+function showResult(r){
+
+    const section =
+        document.getElementById(
+            "resultSection"
+        );
+
+
+    const resultBox =
+        document.getElementById(
+            "terminalResult"
+        );
+
+
+    section.classList.add(
+        "show"
+    );
+
+
+    const modelInput =
+        document.getElementById(
+            "model"
+        ).value.trim();
+
+
+    const brand =
+        document.getElementById(
+            "brand"
+        ).value;
+
+
+    const device =
+        modelInput
+        ? modelInput.toUpperCase()
+        : (
+            brand !== "auto"
+            ? brand.toUpperCase()
+            : "AUTO DEVICE"
+        );
+
+
+    document.getElementById(
+        "trDevice"
+    ).textContent =
+        device;
+
+
+    document.getElementById(
+        "trProfile"
+    ).textContent =
+        getProfile();
+
+
+    document.getElementById(
+        "trGeneral"
+    ).textContent =
+        r.general;
+
+
+    document.getElementById(
+        "trRed"
+    ).textContent =
+        r.red;
+
+
+    document.getElementById(
+        "tr2x"
+    ).textContent =
+        r.x2;
+
+
+    document.getElementById(
+        "tr4x"
+    ).textContent =
+        r.x4;
+
+
+    document.getElementById(
+        "trSniper"
+    ).textContent =
+        r.sniper;
+
+
+    document.getElementById(
+        "trFree"
+    ).textContent =
+        r.free;
+
+
+    document.getElementById(
+        "trDpi"
+    ).textContent =
+        r.dpi;
+
+
+    document.getElementById(
+        "trFire"
+    ).textContent =
+        r.fire + "%";
+
+
+    const items =
+        resultBox.querySelectorAll(
+            ".tr-line,.tr-divider"
+        );
+
+
+    items.forEach(
+        item =>
+            item.classList.remove(
+                "show"
+            )
+    );
+
+
+    resultBox.classList.remove(
+        "scan"
+    );
+
+
+    void resultBox.offsetWidth;
+
+
+    resultBox.classList.add(
+        "scan"
+    );
+
+
+    items.forEach(
+        (item,index)=>{
+
+            setTimeout(
+                ()=>{
+                    item.classList.add(
+                        "show"
+                    );
+                },
+                80 + index * 75
+            );
+
+        }
+    );
+
+
+    setTimeout(
+        ()=>{
+
+            section.scrollIntoView({
+
+                behavior:"smooth",
+
+                block:"center"
+
+            });
+
+        },
+        350
+    );
+
+}
+
+
+/* =========================
+   PRESET
+========================= */
+
+function loadPreset(
+    number,
+    element
+){
+
+    document
+        .querySelectorAll(
+            ".preset"
+        )
+        .forEach(
+            item =>
+                item.classList.remove(
+                    "active"
+                )
+        );
+
+
+    element.classList.add(
+        "active"
+    );
+
+
+    const preset =
+        presets[number];
+
+
+    currentResult =
+        preset;
+
+
+    showResult(
+        preset
+    );
+
+
+    log(
+        "[PRESET] PRESET 0" +
+        number +
+        " loaded.",
+        "ok"
+    );
+
+
+    log(
+        "[PRESET] Stable profile ready.",
+        "ok"
+    );
+
+
+    saveHistory(
+        preset
+    );
+
+
+    toast(
+        "PRESET 0" +
+        number +
+        " READY"
+    );
+
+}
+
+
+/* =========================
+   RESULT TEXT
+========================= */
+
+function buildResultText(){
+
+    if(!currentResult)
+        return "";
+
+
+    const modelInput =
+        document.getElementById(
+            "model"
+        ).value.trim();
+
+
+    const brand =
+        document.getElementById(
+            "brand"
+        ).value;
+
+
+    const device =
+        modelInput
+        ? modelInput.toUpperCase()
+        : (
+            brand !== "auto"
+            ? brand.toUpperCase()
+            : "AUTO DEVICE"
+        );
+
+
+    return `> CONNECTION : STABLE
+> DEVICE : ${device}
+> GAME : FREE FIRE
+> PROFILE : ${getProfile()}
+--------------------------------
+GENERAL : ${currentResult.general}
+RED DOT : ${currentResult.red}
+2X SCOPE : ${currentResult.x2}
+4X SCOPE : ${currentResult.x4}
+SNIPER : ${currentResult.sniper}
+FREE LOOK : ${currentResult.free}
+--------------------------------
+DPI : ${currentResult.dpi}
+FIRE BUTTON : ${currentResult.fire}%
+--------------------------------
+> PRESET STATUS : READY
+> SADEE X DIMA OPTIMIZER : OK`;
+
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+async function copyResult(){
+
+    if(!currentResult){
+
+        toast(
+            "RUN OPTIMIZER FIRST"
+        );
+
+        return;
+
+    }
+
+
+    const text =
+        buildResultText();
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+        toast(
+            "RESULT COPIED"
+        );
+
+    }
+
+    catch(e){
+
+        toast(
+            "COPY FAILED"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SHARE
+========================= */
+
+async function shareResult(){
+
+    if(!currentResult){
+
+        toast(
+            "RUN OPTIMIZER FIRST"
+        );
+
+        return;
+
+    }
+
+
+    const text =
+        buildResultText();
+
+
+    if(
+        navigator.share
+    ){
+
+        try{
+
+            await navigator.share({
+
+                title:
+                    "SADEE X DIMA OPTIMIZER",
+
+                text:text
+
+            });
+
+        }
+
+        catch(e){}
+
+    }
+
+    else{
+
+        copyResult();
+
+    }
+
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+function saveHistory(result){
+
+    let history =
+        JSON.parse(
+            localStorage.getItem(
+                "sdm_history"
+            ) || "[]"
+        );
+
+
+    history.unshift({
+
+        general:
+            result.general,
+
+        red:
+            result.red,
+
+        x2:
+            result.x2,
+
+        time:
+            new Date()
+                .toLocaleTimeString()
+
+    });
+
+
+    history =
+        history.slice(
+            0,
+            8
+        );
+
+
+    localStorage.setItem(
+        "sdm_history",
+        JSON.stringify(
+            history
+        )
+    );
+
+
+    renderHistory();
+
+}
+
+
+function renderHistory(){
+
+    const box =
+        document.getElementById(
+            "history"
+        );
+
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                "sdm_history"
+            ) || "[]"
+        );
+
+
+    if(!history.length){
+
+        box.innerHTML = `
+
+            <div class="history-item">
+
+                <span>
+                    NO HISTORY YET
+                </span>
+
+                <b>
+                    --
+                </b>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        history
+        .map(
+            (item,index)=>`
+
+                <div class="history-item">
+
+                    <span>
+                        PROFILE
+                        ${index+1}
+                        •
+                        ${item.time}
+                    </span>
+
+                    <b>
+                        ${item.general}
+                        /
+                        ${item.red}
+                        /
+                        ${item.x2}
+                    </b>
+
+                </div>
+
+            `
+        )
+        .join("");
+
+}
+
+
+/* =========================
+   INIT
+========================= */
+
+renderHistory();
+
+
+window.addEventListener(
+    "load",
+    ()=>{
+
+        setTimeout(
+            ()=>{
+
+                log(
+                    "[SYSTEM] Ready.",
+                    "ok"
+                );
+
+                log(
+                    "[SYSTEM] Stable sensitivity engine online.",
+                    "ok"
+                );
+
+            },
+            500
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
